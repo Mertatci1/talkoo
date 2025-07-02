@@ -8,13 +8,13 @@ export async function getRecommendedUsers(req, res) {
     const recommendedUsers = await User.find({
       $and: [
         { _id: { $ne: currentUserId } },
-        { $id: { $nin: currentUser.friends } },
+        { _id: { $nin: currentUser.friends } },
         { isOnboarded: true },
       ],
     });
     res.status(200).json(recommendedUsers);
   } catch (error) {
-    console.error("Error in getRecommendedUsers controller", error.message);
+    console.error("Error in getRecomendedUsers controller", error.message);
     res.status(500).json({ message: "Internal Server Error" });
   }
 }
@@ -87,17 +87,15 @@ export async function acceptFriendRequest(req, res) {
       return res.status(404).json({ message: "Friend request not found" });
     }
 
-    // Verify the current user is the recipient
     if (friedRequest.recipient.toString() !== req.user.id) {
       return res.status(403).json({
         message: "You are not authorized to accept this friend request",
       });
     }
-    FriendRequest.status = "accepted";
+
+    friedRequest.status = "accepted"; // <-- burası düzeltildi
     await friedRequest.save();
 
-    // add each user to the other's friends array
-    // $addToSet: adds element to an array only if it doesn't already exist
     await User.findByIdAndUpdate(friedRequest.sender, {
       $addToSet: { friends: friedRequest.recipient },
     });
