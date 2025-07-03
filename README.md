@@ -46,9 +46,6 @@ backend/
 ├── routes/ # Express routes
 └── utils/ # Helper functions (auth, etc.)
 
-yaml
-Kopyala
-Düzenle
 
 ---
 
@@ -69,10 +66,6 @@ frontend/
 ├── reducers/ # Redux reducers
 └── utils/ # WebSocket and helper utilities
 
-yaml
-Kopyala
-Düzenle
-
 ---
 
 ## ⚙️ Getting Started
@@ -85,22 +78,21 @@ Run this in both /frontend and /backend directories.
 
 2. 🔙 Run the Backend
 bash
-Kopyala
-Düzenle
+
 cd backend
 node server.js
+
 3. 💻 Run the Frontend
 bash
-Kopyala
-Düzenle
+
 cd frontend
 npm start
+
 4. 🌐 Environment Variables
 Create a .env file in the root of the backend with the following content:
 
 env
-Kopyala
-Düzenle
+
 STREAM_CHAT_API_KEY=your_stream_key
 STREAM_CHAT_API_SECRET=your_stream_secret
 JWT_SECRET=your_jwt_secret
@@ -124,24 +116,21 @@ Endpoint	Method	Description
 Create a StreamChat instance with your API credentials:
 
 javascript
-Kopyala
-Düzenle
+
 const { StreamChat } = require('stream-chat');
 
 const chat = StreamChat.getInstance('your_api_key', 'your_api_secret');
 🧪 Usage Examples
 ✅ Sending a Message
 javascript
-Kopyala
-Düzenle
+
 chat.sendMessage('channelId', {
   text: 'Hello, world!',
   user: { id: 'userId' }
 });
 📥 Receiving Messages
 javascript
-Kopyala
-Düzenle
+
 chat.on('message.new', (event) => {
   console.log(event.message.text);
 });
@@ -155,8 +144,7 @@ Middleware ensures only authenticated users access restricted resources.
 🧑‍💻 Development vs Production
 Development
 bash
-Kopyala
-Düzenle
+
 npm run dev
 Typically runs both frontend and backend concurrently using tools like concurrently.
 
@@ -164,8 +152,7 @@ Production
 Build frontend using:
 
 bash
-Kopyala
-Düzenle
+
 npm run build
 Serve frontend with a production-grade server (e.g., NGINX).
 
