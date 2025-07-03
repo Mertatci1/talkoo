@@ -158,8 +158,6 @@ Serve frontend with a production-grade server (e.g., NGINX).
 
 Ensure all .env variables are properly configured in deployment environment.
 
-📄 License
-This project is not currently licensed. You may add a license of your choice (e.g., MIT, Apache 2.0) depending on your distribution preferences.
 
 🙌 Contributing
 Coming soon! (Or add your contribution guidelines here)
